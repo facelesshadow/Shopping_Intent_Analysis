@@ -37,6 +37,8 @@ You can experiment with the following ones -
 - **`TEST_SIZE`** represents the portion of dataset which will be used for testing (eg, 0.2 = 20% of the data).
 - **`EPOCHS`** represents the number of times the network will run through the training dataset.
 
+This dataset is provided by [Kaggle](https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset)
+
 ### Project Workflow
 
 1. The `main` function loads data from a CSV file by calling the `load_data` function. The dataset is then preprocessed and split into training and testing sets. This ensures the model can learn from one portion of the data and be evaluated on unseen data.
