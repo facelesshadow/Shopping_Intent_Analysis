@@ -1,4 +1,4 @@
-# shopping
+# Intent Analysis Model
 
 ## Introduction
 
@@ -37,6 +37,16 @@ The general flow of this project is as followed -
 1. The `main` function loads data from a CSV spreadsheet by calling the `load_data` function and splits the data into a training and testing set. 
 2. The `train_model` function is then called to train a machine learning model on the training data. Then, the model is used to make predictions on the testing data set. 
 3. Finally, the `evaluate` function determines the sensitivity and specificity of the model, before the results are ultimately printed to the terminal.
+
+## Output
+
+After training and testing the Prediction Model, you will see the output in following format:
+
+- Correct Predictions (int): The number of instances where the model correctly predicted whether a user would make a purchase or not. 
+- Incorrect Predictions (int): The number of instances where the model incorrectly predicted whether a user would make a purchase or not.
+- Sensitivity (True Positive Rate) (percentage): The proportion of users who actually made a purchase and were correctly identified by the model. This measures the model's ability to detect true positives.
+- Specificity (True Negative Rate) (percentage): The proportion of users who did not make a purchase and were correctly identified by the model. This measures the model's ability to detect true negatives.
+
 
 ## Usage
 
