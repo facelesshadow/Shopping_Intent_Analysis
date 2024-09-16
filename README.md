@@ -1,21 +1,23 @@
+
 # Intent Analysis Model
 
 ## Introduction
 
-Predicting user behavior is a crucial aspect of e-commerce, enabling businesses to tailor their marketing strategies and improve customer experiences. One key challenge is determining a user's purchasing intent, which can be influenced by various factors such as browsing history, demographics, and device usage. This project leverages machine learning to tackle this problem, developing a classifier that predicts whether a user will make a purchase based on their behavior on a shopping website.
+Predicting user behavior is a crucial aspect of e-commerce, enabling businesses to tailor their marketing strategies and improve customer experiences. One key challenge is determining a user's purchasing intent, which can be influenced by various factors such as browsing history, demographics, and device usage. This project leverages machine learning to tackle this problem, developing an Artificial Neural Network that predicts whether a user will make a purchase based on their behavior on a shopping website.
 
 ## Overview
 
-This project aims to build a nearest-neighbor classifier to predict a user's purchasing intent. The classifier will be trained on a dataset comprising 12,000 user sessions.
+This project aims to build a Artificial Neural Network to predict a user's purchasing intent. The network will be trained on a dataset comprising 12,000 user sessions.
 
-The target variable is the user's purchasing intent (boolean). By analyzing these factors, the classifier will predict the likelihood of a user making a purchase, providing valuable insights for e-commerce businesses to optimize their marketing strategies and enhance customer engagement.
+The target variable is the user's purchasing intent (boolean). By analyzing these factors, the network will predict the likelihood of a user making a purchase, providing valuable insights for e-commerce businesses to optimize their marketing strategies and enhance customer engagement.
 
 ## Implementation
 
+### Model
 
-### Classifier
-
-This project utilizes the K-Neighbors Classifier, a supervised learning algorithm that predicts a target variable by finding the most similar instances (nearest neighbors) to a new, unseen instance. In this case, the classifier will identify the k most similar user sessions to a given session, based on features such as pages visited and browser used, and predict the purchasing intent based on the majority vote of these neighbors. The value of k is a hyperparameter that can be tuned for optimal performance. This algorithm is simple yet effective, making it a suitable choice for this classification task.
+This project utilizes a Neural Network, a supervised learning algorithm that predicts a target variable by learning complex patterns in the data through layers of interconnected nodes (neurons). In this case, the neural network analyzes user sessions, using features such as pages visited, browser used, time spent, and other behavioral data, to predict purchasing intent. The network adjusts its internal parameters (weights) during training to minimize prediction error. 
+This architecture allows for greater flexibility and accuracy compared to simpler models like K-Neighbors, as it can capture non-linear relationships in the data. Hyperparameters such as the number of layers, neurons per layer, activation functions, and learning rate can be fine-tuned to achieve optimal performance. 
+*Neural networks are particularly effective for this classification task, given the complexity of user behavior patterns.*
 
 ### Dataset
 
@@ -30,36 +32,52 @@ There are about 12,000 user sessions represented in this spreadsheet: represente
 - `Weekend` is TRUE or FALSE depending on whether or not the user is visiting on a weekend.
 - the `Revenue` column indicates whether the user ultimately made a purchase or not: `TRUE` if they did, `FALSE` if they didn’t.
 
-### How It Works
+You can experiment with the following ones - 
+- **`TEST_SIZE`** represents the portion of dataset which will be used for testing (eg, 0.2 = 20% of the data).
+- **`EPOCHS`** represents the number of times the network will run through the training dataset.
 
-The general flow of this project is as followed -
+### Project Workflow
 
-1. The `main` function loads data from a CSV spreadsheet by calling the `load_data` function and splits the data into a training and testing set. 
-2. The `train_model` function is then called to train a machine learning model on the training data. Then, the model is used to make predictions on the testing data set. 
-3. Finally, the `evaluate` function determines the sensitivity and specificity of the model, before the results are ultimately printed to the terminal.
+1. The `main` function loads data from a CSV file by calling the `load_data` function. The dataset is then preprocessed and split into training and testing sets. This ensures the model can learn from one portion of the data and be evaluated on unseen data.
+    
+2. **Model Training**:  
+    The `train_model` function is invoked to build and train an Artificial Neural Network (ANN) on the training data. The network's architecture, including the number of layers and neurons, is defined in this step, and the model learns by adjusting weights through backpropagation. After training, the model is used to make predictions on the test set.
+    
+3. **Evaluation**:  
+    The `evaluate` function is responsible for assessing the performance of the model by calculating key metrics like sensitivity and specificity. These metrics help determine the model’s ability to correctly identify positive and negative classes (e.g., predicting user purchase intent). The final evaluation results are printed to the terminal for review.
 
 ## Output
 
-After training and testing the Prediction Model, you will see the output in following format:
+The training process of the neural network generates several metrics at each epoch, providing insights into how well the model is learning. Below is an explanation of the key components seen in the output:
 
-- Correct Predictions (int): The number of instances where the model correctly predicted whether a user would make a purchase or not. 
-- Incorrect Predictions (int): The number of instances where the model incorrectly predicted whether a user would make a purchase or not.
-- Sensitivity (True Positive Rate) (percentage): The proportion of users who actually made a purchase and were correctly identified by the model. This measures the model's ability to detect true positives.
-- Specificity (True Negative Rate) (percentage): The proportion of users who did not make a purchase and were correctly identified by the model. This measures the model's ability to detect true negatives.
-
+- **Epoch X/Y**: Indicates the current epoch number (X) out of the total number of epochs (Y) the model will run during training. Each epoch represents one complete pass through the training dataset.
+    
+- **Steps per Epoch**: Displays the number of batches processed in each epoch (e.g., `232/232` means all 232 batches have been processed). This is based on the size of the dataset and the batch size.
+    
+- **Accuracy**: Shows the percentage of correctly predicted outputs out of the total predictions made during that epoch. The accuracy metric is crucial for assessing how well the model is performing on the training data. Higher values indicate better performance.
+    
+- **Loss**: Reflects how far the model’s predictions are from the actual targets. Lower values represent better model performance. The loss is a key measure during training as it guides the model's weight updates through backpropagation.
+    
+- **Step Time**: Indicates the time taken to process each step in the epoch, usually in milliseconds or microseconds (e.g., `781us/step`). This gives a sense of the training speed.
+    
+- **Validation/Test Accuracy and Loss**: After training is complete, the model is evaluated on a separate validation or test dataset. The output will display the final accuracy and loss for this unseen data (e.g., `accuracy: 0.8889`, `loss: 0.3981`). These metrics are important because they show how well the model generalizes to data it hasn't seen before.
 
 ## Usage
 
 To run the project, execute the following command:
 ```
-python shopping.py data
+python shopping_nn.py data
 ```
 
 ## Dependencies
 
 This project relies on the following libraries:
 
-- `train_test_split` from `sklearn.model_selection`.
-- `KNeighborsClassifier` from `sklearn.neighbors`.
-
-(If you have scikit.learn, then you are good for the most part)
+- **csv**: Handles reading and writing CSV files (Python standard library).
+- **sys**: Manages system-specific parameters and command-line arguments (Python standard library).
+- **NumPy** (`numpy`): Supports large arrays and mathematical operations.  
+    Install: `pip install numpy`
+- **TensorFlow** (`tensorflow`): Builds and trains the neural network model.  
+    Install: `pip install tensorflow`
+- **Scikit-learn** (`sklearn`): Provides tools for data splitting and evaluation.  
+    Install: `pip install scikit-learn`
