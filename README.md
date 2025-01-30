@@ -1,5 +1,5 @@
 
-# Intent Analysis Model
+# Intent Analysis using Random Forests
 
 ## Introduction
 
