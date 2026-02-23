@@ -6,6 +6,7 @@
 Predicting user behavior is pivotal in the realm of e-commerce, as it allows businesses to refine their marketing strategies and enhance customer experiences. Understanding a user's purchasing intent involves analyzing a myriad of factors including browsing history, demographics, device usage, and more.
 
 This project addresses this challenge by employing an artificial neural network (ANN) to predict a user's likelihood of making a purchase. By leveraging the power of neural networks, we can capture complex patterns and interactions within behavioral data, providing more accurate predictions compared to traditional methods. The model is designed to analyze various inputs such as time of day, day of the week, date, holiday status, shopping duration, and other behavioral metrics to determine the probability of a purchase.
+
 ## Overview
 
 This project aims to build a Artificial Neural Network to predict a user's purchasing intent. The network will be trained on a dataset comprising 12,000 user sessions.
